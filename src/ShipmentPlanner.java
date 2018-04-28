@@ -5,11 +5,14 @@ import java.util.Scanner;
 public class ShipmentPlanner {
 	
 	public static void main(String args[]) {
+		Map map = new Map();
+		
 		Scanner sc = null;
 	      try
 	      {
 	          sc = new Scanner(new File(args[0]));
-	          // Read input from the scanner here
+	          int time;
+	          String name, name1, name2;
 	          
 	          while(sc.hasNext()) {
 		        	String command = sc.next();
@@ -17,27 +20,27 @@ public class ShipmentPlanner {
 		        		case "#": 
 		        			sc.nextLine();
 		        			break;
-		        		case "Cinema":
-		        			cinema = sc.next();
-		        			row = sc.next();
-		        			seats = sc.nextInt();
+		        		case "Refuelling":
+		        			time = sc.nextInt();
+		        			name = sc.next();
+		        			map.addPort(name, time);
+		        			//System.out.print("Scanned " + time + " " + name +  "\n");
 		        			break;
-		        		case "Session":
-		        			cinema = sc.next();
-		        			time = sc.next();
-		        			
-		        	
-		
+		        		case "Time":
+		        			time = sc.nextInt();
+		        			name1 = sc.next();
+		        			name2 = sc.next();
+		        			map.addEdge(name1, name2, time);
+		        			//System.out.print("Scanned " + time + " " + name1 + " " + name2 + "\n");
 		        			break;
-		        		case "Request":
-		        			booking_id = sc.nextInt();
-		        			cinema = sc.next();
-		        			time = sc.next();
-		        			tickets = sc.nextInt();
-		        			
-		      
+		        		case "Shipment":
+		        			name1 = sc.next();
+		        			name2 = sc.next();
+		        			//Strategy s = AStar();
+		        			//System.out.print("Scanned " + name1 + " " + name2 +  "\n");
 		        			break;
 		        	}
+	          }
 	      }
 	      catch (FileNotFoundException e)
 	      {
