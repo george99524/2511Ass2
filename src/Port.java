@@ -3,16 +3,15 @@ public class Port {
 	
 	private String name;
 	private int refuel_time;
-	private int heuristic;
+	private int index;
 	
-	public Port(String n, int t) {
+	public Port(String n, int t, int i) {
 		name = n;
 		refuel_time = t;
-		
-		heuristic = t; //CHANGE LATER
+		index = i;
 	}
 	
 	public String getName() { return name;}
 	public int getTime() { return refuel_time;}
-	public int getHeuristic() { return heuristic;}
+	public int getIndex() { return index;}
 }

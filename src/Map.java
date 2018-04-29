@@ -13,7 +13,7 @@ public class Map {
 	}
 	
 	public void addPort(String n, int t) {
-		Port p = new Port(n, t);
+		Port p = new Port(n, t, size);
 		port_list.add(p);
 		size += 1;
 	}
@@ -41,7 +41,10 @@ public class Map {
 	
 	public ArrayList<Port> connected(Port a) {
 		ArrayList<Port> list = new ArrayList<Port>();
-		// FINISH LATER
+		for (Port p : port_list) {
+			if (edges[a.getIndex()][p.getIndex()] != 0) { list.add(p); }
+		}
+		
 		return list;
 	}
 	
@@ -54,4 +57,7 @@ public class Map {
 		}
 		System.out.print("\n");
 	}
+	
+	public int size() { return size; }
+	public int getDist(Port a, Port b) { return edges[a.getIndex()][b.getIndex()]; }
 }
