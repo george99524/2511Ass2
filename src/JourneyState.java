@@ -7,10 +7,10 @@ public class JourneyState {
 	private ArrayList<Port> path;
 	private int total;
 	
-	public JourneyState(Port c, ArrayList<Port> p, int t) {
+	public JourneyState(Port c, int t) {
 		//map = m;
 		curr = c;
-		path = p;
+		path = new ArrayList<Port>();
 		total = t;
 	}
 	
@@ -23,4 +23,5 @@ public class JourneyState {
 	}
 	
 	public Port getCurr() { return curr; }
+	public void setCurr(Port p) { curr = p; }
 }

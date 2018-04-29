@@ -14,7 +14,7 @@ public class AStarSearch {
 		ArrayList<Port> seen = new ArrayList<Port>();
 		PriorityQueue<Pair<Port, Integer>> to_visit = new PriorityQueue<Pair<Port, Integer>>(new PortComparator());
 		
-		JourneyState state = new JourneyState(start, new ArrayList<Port>(), 0);
+		JourneyState state = new JourneyState(start, 0);
 		
 		// Cost of Start node to other nodes, -1 is infinity
 		int[] gValue = new int[map.size()];
@@ -27,7 +27,7 @@ public class AStarSearch {
 		int[] fValue = new int[map.size()];
 		java.util.Arrays.fill(fValue, -1);
 				
-		fValue[start.getIndex()] = heuristic.getHeur(state, map);
+		fValue[start.getIndex()] = heuristic.getHeur(state, map, start);
 		
 		to_visit.add(new Pair<Port, Integer>(start, 0));
 		seen.add(start);
@@ -43,7 +43,17 @@ public class AStarSearch {
 				
 				Pair<Port, Integer> temp = new Pair<Port, Integer>(neighbour, heuristic.getHeur(state, map, neighbour));
 				if (!to_visit.contains(temp)) to_visit.add(temp);
-				to_visit.add(new Pair<Port, Integer>(neighbour))
+				
+				int temp_gValue = gValue[current.getIndex()] + map.getDist(current, neighbour);
+				int index = neighbour.getIndex();
+				// Not a better path
+				if (gValue[index] != -1 && temp_gValue >= gValue[index]) continue;
+				
+				// CHANGE LATER
+				state.setCurr(neighbour);
+				
+				gValue[index] = temp_gValue;
+				fValue[index] = 
 			}
 		}
 	}
