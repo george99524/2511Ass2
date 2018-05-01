@@ -5,17 +5,20 @@ import javafx.util.Pair;
 public class Searcher {
 	
 	private Heuristic heuristic;
+	private ArrayList<Job> jobs;
+	private PriorityQueue<Pair<Job, Integer>> queue;
+	private JourneyState state;
 	
 	public Searcher(Heuristic h) {
 		heuristic = h;
+		queue = new PriorityQueue<Pair<Job, Integer>>(new JobComparator());
 	}
 	
 	public void findPath(Port start, ArrayList<Job> list, Map map) {
 		//ArrayList<Port> seen = new ArrayList<Port>();
-		ArrayList<Job> jobs = list;
-		PriorityQueue<Pair<Job, Integer>> queue = new PriorityQueue<Pair<Job, Integer>>(new JobComparator());
 		
-		JourneyState state = new JourneyState(start, jobs);
+		jobs = list;
+		state = new JourneyState(start, jobs);
 		
 		// Cost of travelling to this node, -1 is infinity
 		//int[] gValue = new int[map.size()];
@@ -51,7 +54,6 @@ public class Searcher {
 				expanded += 1;
 			}
 			
-			
 			// Complete the job
 			state.completeJob(current);
 			jobs.remove(current);
@@ -66,6 +68,5 @@ public class Searcher {
 		}
 		System.out.print(expanded + " nodes expanded\n");
 		state.printPath();
-		return;
 	}
 }
