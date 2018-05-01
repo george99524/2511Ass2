@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ShipmentPlanner {
 	
 	public static void main(String args[]) {
 		Map map = new Map();
+		ArrayList<Job> jobs = new ArrayList<Job>();
 		
 		Scanner sc = null;
 	      try
@@ -36,8 +38,9 @@ public class ShipmentPlanner {
 		        		case "Shipment":
 		        			name1 = sc.next();
 		        			name2 = sc.next();
-		        			//Strategy s = AStar();
-		        			//System.out.print("Scanned " + name1 + " " + name2 +  "\n");
+		        			Port a = map.getPort(name1);
+		        			Port b = map.getPort(name2);
+		        			jobs.add(new Job(a, b, map.getDist(a, b)));
 		        			break;
 		        	}
 	          }
@@ -50,5 +53,8 @@ public class ShipmentPlanner {
 	      {
 	          if (sc != null) sc.close();
 	      }
+	      Heuristic h = new heuristicStandard();
+	      Searcher s = new Searcher(h);
+	      s.findPath(map.getPort("Sydney"), jobs, map);
 	}
 }

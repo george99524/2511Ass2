@@ -58,6 +58,13 @@ public class Map {
 		System.out.print("\n");
 	}
 	
+	public Port getPort(String name) {
+		for (Port p : port_list) {
+			if (p.getName().equals(name)) return p;
+		}
+		return null;
+	}
+	
 	public int size() { return size; }
 	public int getDist(Port a, Port b) { return edges[a.getIndex()][b.getIndex()]; }
 }
