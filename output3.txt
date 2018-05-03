@@ -1,0 +1,27 @@
+6 nodes expanded
+cost =  390
+Ship Sydney to Sibiu
+Ship Sibiu to Rimnicu
+Ship Rimnicu to Lugoj
+Ship Lugoj to Timisoara
+Ship Timisoara to Sydney
+Ship Sydney to Sibiu
+Ship Sibiu to Rimnicu
+Ship Rimnicu to Lugoj
+Ship Lugoj to Sydney
+Ship Sydney to Sibiu
+Ship Sibiu to Rimnicu
+Ship Rimnicu to Timisoara
+Ship Timisoara to Sydney
+Ship Sydney to Sibiu
+Ship Sibiu to Lugoj
+Ship Lugoj to Timisoara
+Ship Timisoara to Sydney
+Ship Sydney to Sibiu
+Ship Sibiu to Rimnicu
+Ship Rimnicu to Lugoj
+Ship Lugoj to Sydney
+Ship Sydney to Rimnicu
+Ship Rimnicu to Lugoj
+Ship Lugoj to Timisoara
+Ship Timisoara to Sibiu

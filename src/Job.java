@@ -6,6 +6,7 @@ public class Job {
 	private int dist;
 	
 	public Job(Port a, Port b, int d) {
+		
 		start = a;
 		dest = b;
 		dist = d;

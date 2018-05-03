@@ -6,6 +6,7 @@ public class Port {
 	private int index;
 	
 	public Port(String n, int t, int i) {
+		
 		name = n;
 		refuel_time = t;
 		index = i;

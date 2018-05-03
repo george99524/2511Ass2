@@ -1,0 +1,8 @@
+14 nodes expanded
+cost = 218
+Ship Sydney to Singapore
+Ship Singapore to Shanghai
+Ship Shanghai to Singapore
+Ship Singapore to NewYork
+Ship NewYork to Vancouver
+Ship Vancouver to France

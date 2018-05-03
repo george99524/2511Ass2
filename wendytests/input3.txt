@@ -1,0 +1,28 @@
+Refuelling 4 Sydney            
+Refuelling 5 Shanghai          
+Refuelling 2 Singapore        
+Refuelling 7 NewYork
+Refuelling 6 Vancouver          
+Refuelling 8 France             
+Time 8 Sydney Shanghai         
+Time 10 Sydney Singapore       
+Time 13 Sydney NewYork      
+Time 17 Sydney Vancouver          
+Time 18 Sydney France
+Time 6 Shanghai Singapore      
+Time 12 Shanghai NewYork      
+Time 14 Shanghai Vancouver
+Time 15 Shanghai France
+Time 15 Singapore NewYork
+Time 9 Singapore Vancouver     
+Time 15 Singapore France
+Time 13 NewYork Vancouver
+Time 13 NewYork France
+Time 8 Vancouver France 
+Shipment Singapore Shanghai
+Shipment Singapore Vancouver
+Shipment NewYork Vancouver
+Shipment France Vancouver
+Shipment France Sydney
+
+

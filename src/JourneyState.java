@@ -7,41 +7,48 @@ public class JourneyState {
 	private ArrayList<Port> path;
 	private int total;
 	
-	public JourneyState(Port a, ArrayList<Job> j) {
-		//map = m;
+	public JourneyState(Port a, ArrayList<Job> j, ArrayList<Port> p, int t) {
+		
 		curr = a;
 		jobs = j;
-		path = new ArrayList<Port>();
-		total = 0;
-	}
-	
-	public void travel(Port p, int dist) {
-		//Port temp = path.get(path.size()-1);
-		//System.out.print(curr.getName()+" current\n");
-		//System.out.print(p.getName()+" added to state\n");
-		path.add(curr);
-		curr = p;
-		total += dist + p.getTime();
-		//printPath();
+		path = p;
+		total = t;
 	}
 	
 	public void printPath() {
+		
 		System.out.print("cost =  " + total + "\n");
-		System.out.print("n =  " + path.size() + "\n");
 		for (int i = 0; i<path.size() - 1; i += 1) {
 			System.out.print("Ship " + path.get(i).getName() + " to " + path.get(i+1).getName() + "\n");
 		}
-		System.out.print("Ship " + path.get(path.size()-1).getName() + " to " + curr.getName() + "\n");
+		//System.out.print("Ship " + path.get(path.size()-1).getName() + " to " + curr.getName() + "\n");
 	}
 	
-	public void completeJob(Job j) {
-		travel(j.dest(), j.dist());
-		jobs.remove(j);
+	public ArrayList<Job> getJobs() { 
+		
+		ArrayList<Job> copy = new ArrayList<Job>();
+		for (Job j : jobs) copy.add(j);
+		return copy; 
 	}
 	
-	public ArrayList<Job> getJobs() { return jobs; }
+	public ArrayList<Port> jobSites() { 
+		ArrayList<Port> sites = new ArrayList<Port>();
+		for (Job j : jobs) {
+			if (!sites.contains(j.start())) { sites.add(j.start()); }
+			if (!sites.contains(j.dest())) { sites.add(j.dest()); }
+		}
+		return sites; 
+	}
+	
+	public ArrayList<Port> getPath() { 
+		ArrayList<Port> copy = new ArrayList<Port>();
+		for (Port p : path) copy.add(p);
+		return copy; 
+	}
+	
 	public int nJobs() { return jobs.size(); }
 	public Port getCurr() { return curr; }
 	public void setCurr(Port p) { curr = p; }
-	//public Port getGoal() { return goal; }
+	public boolean isDone() { return jobs.isEmpty(); }
+	public int cost() { return total; }
 }

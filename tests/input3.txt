@@ -1,0 +1,24 @@
+# Testing ShipmentPlanner on a different graph
+
+Refuelling 10 Sydney
+Refuelling 8 Sibiu
+Refuelling 5 Rimnicu
+Refuelling 8 Lugoj
+Refuelling 3 Timisoara
+
+Time 140 Sydney Sibiu
+Time 200 Sydney Rimnicu
+Time 190 Sydney Lugoj
+Time 118 Sydney Timisoara
+Time 80 Sibiu Rimnicu
+Time 140 Sibiu Lugoj
+Time 170 Sibiu Timisoara
+Time 100 Rimnicu Lugoj
+Time 230 Rimnicu Timisoara
+Time 111 Lugoj Timisoara
+
+Shipment Sydney Rimnicu
+Shipment Timisoara Sydney
+Shipment Timisoara Lugoj
+Shipment Lugoj Sibiu
+Shipment Sibiu Sydney

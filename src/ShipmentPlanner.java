@@ -5,8 +5,13 @@ import java.util.Scanner;
 
 public class ShipmentPlanner {
 	
+	PortMap map;
+	ArrayList<Job> jobs;
+    Searcher s;
+	
 	public static void main(String args[]) {
-		Map map = new Map();
+		
+		PortMap map = new PortMap();
 		ArrayList<Job> jobs = new ArrayList<Job>();
 		
 		Scanner sc = null;
@@ -53,8 +58,8 @@ public class ShipmentPlanner {
 	      {
 	          if (sc != null) sc.close();
 	      }
-	      Heuristic h = new heuristicStandard();
-	      Searcher s = new Searcher(h);
+	      
+	      Searcher s = new Searcher();
 	      s.findPath(map.getPort("Sydney"), jobs, map);
 	}
 }
