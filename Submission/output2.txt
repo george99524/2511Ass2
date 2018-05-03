@@ -1,5 +1,5 @@
 766 nodes expanded
-cost =  476
+cost = 476
 Ship Sydney to Singapore
 Ship Singapore to Manila
 Ship Manila to Singapore
