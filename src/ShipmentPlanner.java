@@ -5,14 +5,10 @@ import java.util.Scanner;
 
 public class ShipmentPlanner {
 	
-	PortMap map;
-	ArrayList<Job> jobs;
-    Searcher s;
-	
 	public static void main(String args[]) {
 		
-		PortMap map = new PortMap();
-		ArrayList<Job> jobs = new ArrayList<Job>();
+		PortMap map = new PortMap();					// The map(graph) created
+		ArrayList<Job> jobs = new ArrayList<Job>();		// A list of jobs requested
 		
 		Scanner sc = null;
 	      try
@@ -31,14 +27,12 @@ public class ShipmentPlanner {
 		        			time = sc.nextInt();
 		        			name = sc.next();
 		        			map.addPort(name, time);
-		        			//System.out.print("Scanned " + time + " " + name +  "\n");
 		        			break;
 		        		case "Time":
 		        			time = sc.nextInt();
 		        			name1 = sc.next();
 		        			name2 = sc.next();
 		        			map.addEdge(name1, name2, time);
-		        			//System.out.print("Scanned " + time + " " + name1 + " " + name2 + "\n");
 		        			break;
 		        		case "Shipment":
 		        			name1 = sc.next();
@@ -59,6 +53,7 @@ public class ShipmentPlanner {
 	          if (sc != null) sc.close();
 	      }
 	      
+	      // Search for the most efficient path
 	      Searcher s = new Searcher();
 	      s.findPath(map.getPort("Sydney"), jobs, map);
 	}

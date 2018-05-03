@@ -1,9 +1,9 @@
 
 public class Job {
 	
-	private Port start;
-	private Port dest;
-	private int dist;
+	private Port start;		// The port where the shipment is picked up
+	private Port dest;		// The port where the shipment is dropped off
+	private int dist;		// The distance between the ports
 	
 	public Job(Port a, Port b, int d) {
 		
