@@ -5,10 +5,22 @@ import java.util.Scanner;
 
 public class ShipmentPlanner {
 	
+	PortMap map;				// The map(graph) created
+	ArrayList<Job> jobs;		// A list of jobs requested
+	Searcher s;					// The path searcher
+	
+	public ShipmentPlanner(PortMap m, ArrayList<Job> list, Searcher search) {
+		map = m;					
+		jobs = list;			
+		s = search;						
+	}
+	
 	public static void main(String args[]) {
 		
-		PortMap map = new PortMap();					// The map(graph) created
-		ArrayList<Job> jobs = new ArrayList<Job>();		// A list of jobs requested
+		
+		PortMap map = new PortMap();
+		ArrayList<Job> jobs = new ArrayList<Job>();
+		Searcher s = new Searcher();
 		
 		Scanner sc = null;
 	      try
@@ -53,8 +65,12 @@ public class ShipmentPlanner {
 	          if (sc != null) sc.close();
 	      }
 	      
+	      ShipmentPlanner planner = new ShipmentPlanner(map, jobs, s);
 	      // Search for the most efficient path
-	      Searcher s = new Searcher();
-	      s.findPath(map.getPort("Sydney"), jobs, map);
+	      planner.findPath(map.getPort("Sydney"), jobs, map);
+	}
+	
+	public void findPath(Port start, ArrayList<Job> list, PortMap map) {
+		s.findPath(map.getPort("Sydney"), jobs, map);
 	}
 }

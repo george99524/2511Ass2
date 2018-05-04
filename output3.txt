@@ -1,5 +1,5 @@
 36 nodes expanded
-cost =  997
+cost = 997
 Ship Sydney to Timisoara
 Ship Timisoara to Lugoj
 Ship Lugoj to Sibiu

@@ -19,6 +19,7 @@ public class HeuristicStandard implements Heuristic {
 		int sum = 0;	// The sum of completing all the jobs (wiithout accounting travel time inbetween jobs)
 		int min = -1;	// The distance to the nearest job (i.e. the start port for the job)
 		for (Job temp : s.getJobs()) {
+			
 			int dist = m.getDist(s.getCurr(), temp.start());
 			if (min==-1 || min>dist) min = dist;
 			sum += temp.dist() + temp.start().getTime();

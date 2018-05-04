@@ -9,6 +9,10 @@ public class Searcher {
 	private Heuristic heuristic;								// The heuristic used for the search
 	private ArrayList<Job> jobs;								// The list of jobs required to be completed in the search
 	private PriorityQueue<Pair<JourneyState, Integer>> queue;	// The queue of states to be expanded
+	private ArrayList<JourneyState> seen;						// A list of already expanded states
+	private Map<Pair<ArrayList<Job>, Port>, Integer> g_state;	// A list of the g values for each combination of the list of jobs left to be done
+																// and the current port
+																// This is essentially comparing the g values of each state
 	
 	public Searcher() {
 		// Set heuristic
@@ -27,13 +31,8 @@ public class Searcher {
 	 */
 	public void findPath(Port start, ArrayList<Job> list, PortMap map) {
 		
-		// A list of already expanded states
-		ArrayList<JourneyState> seen = new ArrayList<JourneyState>();
-		
-		// A list of the g values for each combination of the list of jobs left to be done
-		// and the current port
-		// This is essentially comparing the g values of each state
-		Map<Pair<ArrayList<Job>, Port>, Integer> g_state = new HashMap<Pair<ArrayList<Job>, Port>, Integer>();
+		seen = new ArrayList<JourneyState>();
+		g_state = new HashMap<Pair<ArrayList<Job>, Port>, Integer>();
 		
 		// Set the list of jobs to be done
 		jobs = list;
@@ -44,9 +43,9 @@ public class Searcher {
 		JourneyState state = new JourneyState(start, jobs, path, 0);
 		
 		// Generate states
-		generateStates(state, map, g_state);
+		generateStates(state, map);
 		
-		// Start node is expanded
+		// Start state is expanded
 		int expanded = 1;
 		
 		// Stop when the first completed state is reached
@@ -64,9 +63,8 @@ public class Searcher {
 			// Add the state to seen list
 			seen.add(state);
 			
-			
 			// Generate new states for each neighbour of the current port
-			generateStates(state, map, g_state);
+			generateStates(state, map);
 		}
 		
 		// Print the path and its information
@@ -77,10 +75,9 @@ public class Searcher {
 	/**
 	 * The method to generate the states for each neighbour of the provided state
 	 * @param state		The current state that is observed
-	 * @param map		The map to be transversed
-	 * @param g			The hashmap containing the g(x) values for each "state"
+	 * @param map		The map used to navigate the ports
 	 */
-	public void generateStates(JourneyState state, PortMap map, Map<Pair<ArrayList<Job>, Port>, Integer> g) {
+	public void generateStates(JourneyState state, PortMap map) {
 		// Get the current port from the state
 		Port current = state.getCurr();
 		
@@ -107,18 +104,19 @@ public class Searcher {
 				
 				// Get the g(x) value for the current state
 				int gValue = temp.cost();
+				
 				// Add new entry for g(x) if it doesn't exist for the current state
 				// Overwrite old entry if new path costs less
 				// Skip the current state if the new path costs more
 				Pair<ArrayList<Job>, Port> pair = new Pair<ArrayList<Job>, Port>(jobs_left, p);
-				if (g.containsKey(pair)) {
-					if (g.get(pair)>gValue) {
-						g.put(pair, gValue);
+				if (g_state.containsKey(pair)) {
+					if (g_state.get(pair)>gValue) {
+						g_state.put(pair, gValue);
 					}else {
 						continue;
 					}
 				}else {
-					g.put(pair, gValue);
+					g_state.put(pair, gValue);
 				}
 				
 				// Calculate f(x) and add to the queue

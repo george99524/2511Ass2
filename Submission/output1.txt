@@ -1,11 +1,9 @@
-86 nodes expanded
-cost = 194
-Ship Sydney to Manila
+10 nodes expanded
+cost = 152
+Ship Sydney to Vancouver
+Ship Vancouver to Manila
 Ship Manila to Singapore
 Ship Singapore to Shanghai
 Ship Shanghai to Singapore
-Ship Singapore to Vancouver
-Ship Vancouver to Manila
+Ship Singapore to Manila
 Ship Manila to Sydney
-Ship Sydney to Vancouver
-Ship Vancouver to Sydney

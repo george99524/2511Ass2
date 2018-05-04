@@ -17,6 +17,14 @@ Time 100 Rimnicu Lugoj
 Time 230 Rimnicu Timisoara
 Time 111 Lugoj Timisoara
 
+# This is a different graph with different weights and paths
+
+# In this scenario, the optimal path does not begin by travelling from
+# Sydney to Rimnicu, despite it being the most obvious choice at the start.
+# In other words, this tests the searcher for signs of
+# it being a greedy algorithm, or not having the proper implementation of
+# A star search.
+
 Shipment Sydney Rimnicu
 Shipment Timisoara Sydney
 Shipment Timisoara Lugoj
